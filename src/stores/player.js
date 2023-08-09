@@ -34,6 +34,12 @@ export default defineStore('player', {
       if (this.sound.playing()) this.sound.pause()
       else this.sound.play()
     },
+    stopPlaying(){
+      if (this.sound instanceof Howl) {
+        this.sound.unload();
+        this.sound = {}
+      }
+    },
     progress() {
       this.seek = helper.formatTime(this.sound.seek())
       this.duration = helper.formatTime(this.sound.duration())
@@ -41,17 +47,16 @@ export default defineStore('player', {
 
       if (this.sound.playing) requestAnimationFrame(this.progress)
     },
-    updateSeek(event){
-if(!this.sound.playing) return;
+    updateSeek(event) {
+      if (!this.sound.playing) return
 
-      const { x , width} = event.currentTarget.getBoundingClientRect()
-      const clientX = event.clientX - x;
-      const percentage = clientX / width;
+      const { x, width } = event.currentTarget.getBoundingClientRect()
+      const clientX = event.clientX - x
+      const percentage = clientX / width
       const secounds = this.sound.duration() * percentage
 
-      this.sound.seek(secounds);
-      this.sound.once('seek',this.progress)
-      
+      this.sound.seek(secounds)
+      this.sound.once('seek', this.progress)
     }
   },
   getters: {

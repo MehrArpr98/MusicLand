@@ -26,25 +26,22 @@
       <input class="text-white" type="file" multiple @change="upload($event)" />
       <hr class="my-6" />
       <!-- Progess Bars -->
-      <div
-        class="mb-4"
-        v-for="upload in uploads"
-        :key="upload.name"
-        v-show="upload.current_progress > 0"
-      >
-        <!-- File Name -->
-        <div class="text-gray-300 font-bold text-sm" :class="upload.text_class">
-          <i :class="upload.icon"></i>
-          {{ upload.name }}
-        </div>
-        <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
-          <!-- Inner Progress Bar -->
-          <div
-            class="transition-all progress-bar"
-            :class="upload.variant"
-            :style="{width: upload.current_progress + '%'}"
-          ></div>
-        </div>
+      <div class="mb-4" v-for="upload in uploads" :key="upload.name">
+        <template v-if="upload.current_progress > 0">
+          <!-- File Name -->
+          <div class="text-gray-300 font-bold text-sm" :class="upload.text_class">
+            <i :class="upload.icon"></i>
+            {{ upload.name }}
+          </div>
+          <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
+            <!-- Inner Progress Bar -->
+            <div
+              class="transition-all progress-bar"
+              :class="upload.variant"
+              :style="{width: upload.current_progress + '%'}"
+            ></div>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -68,7 +65,7 @@ export default {
       required: true
     }
   },
-  async created(){
+  async created() {
     this.defaultmusicAddress = await helper.getStaticImage('defult-music.jpg')
   },
   methods: {
