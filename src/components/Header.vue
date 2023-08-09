@@ -15,17 +15,17 @@
 
       <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
-        <ul class="flex flex-row mt-1">
+        <ul class="flex flex-row mt-1 text-white">
           <!-- Navigation Links -->
           <li>
             <router-link
-              class="px-2 mx-2 text-white hover:text-violet-200"
+              class="px-2 mx-2 hover:text-violet-200"
               :to="{ name: 'about'}"
             >About</router-link>
           </li>
           <li v-if="!userStore.userLoggedIn">
             <a
-              class="px-2 text-white hover:text-violet-200"
+              class="px-2 hover:text-violet-200"
               href="#"
               @click.prevent="toggleAuthModal"
             >
@@ -35,12 +35,12 @@
           <template v-else>
             <li>
               <router-link
-                class="px-2 mx-2 text-white hover:text-violet-200"
+                class="px-2 mx-2 hover:text-violet-200"
                 :to="{ name: 'manage'}"
               >Manage</router-link>
             </li>
             <li>
-              <a class="px-2 text-white hover:text-violet-200" href="#" @click.prevent="signOut">
+              <a class="px-2 hover:text-violet-200" href="#" @click.prevent="signOut">
                 <i class="fa fa-user mr-1"></i>Logout
               </a>
             </li>

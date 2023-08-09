@@ -52,12 +52,14 @@
 
 <script>
 import { storage, auth, songsCollection } from '@/includes/firebase'
+import helper from '@/includes/helper'
 
 export default {
   data() {
     return {
       is_dragOver: false,
-      uploads: []
+      uploads: [],
+      defaultmusicAddress: ''
     }
   },
   props: {
@@ -65,6 +67,9 @@ export default {
       type: Function,
       required: true
     }
+  },
+  async created(){
+    this.defaultmusicAddress = await helper.getStaticImage('defult-music.jpg')
   },
   methods: {
     upload($event) {
@@ -112,7 +117,7 @@ export default {
               modified_name: task.snapshot.ref.name,
               gener: '',
               comment_count: 0,
-              img_url: '../../public/assets/img/defult-music.jpg'
+              img_url: this.defaultmusicAddress
             }
             song.url = await task.snapshot.ref.getDownloadURL()
 
