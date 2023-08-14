@@ -4,7 +4,7 @@
       <img :src="song.img_url" class="float-left h-7 mr-2" />
       <router-link
         :to="{ name: 'song', params:{ id: song.docID}}"
-        class="inline-block text-xl text-gray-300 hover:font-bold hover:text-white w-1/2"
+        class="inline-block text-sm md:text-xl text-gray-300 hover:font-bold hover:text-white w-1/2"
       >{{ song.modified_name }}</router-link>
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-white border-b border-l border-red-600 float-right transition duration-100 hover:bg-red-600"
@@ -28,7 +28,7 @@
         </label>
       </button>
 
-      <div class="float-right w-1/5 my-1.5" v-show="uploadImg.current_progress > 0">
+      <div class="float-none md:float-right w-1/2 md:w-1/5 mt-6 md:my-1.5" v-show="uploadImg.current_progress > 0">
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
           <!-- Inner Progress Bar -->
           <div
@@ -171,7 +171,7 @@ export default {
     uploadImage(e) {
       const files = [...e.target.files]
       files.forEach((file) => {
-        if (file.type !== 'image/jpeg') {
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg') {
           return
         }
 

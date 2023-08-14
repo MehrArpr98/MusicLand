@@ -3,21 +3,24 @@
     <!-- Music Header -->
     <section class="w-full mb-8 py-14 text-center text-white relative">
       <div
-        class="absolute inset-0 w-full h-full box-border bg-contain music-bg"
+        class="absolute inset-0 w-full h-full box-border bg-cover md:bg-contain music-bg md:bg-repeat-x"
         :style="{backgroundImage: 'url('+songheaderAddress+')'}"
       ></div>
       <div class="px-5 container mx-auto flex items-center">
-        <!-- Play/Pause Button -->
+        <div class="z-10">
+          <!-- Play/Pause Button -->
         <button
           @click.prevent="newSong(song)"
           type="button"
-          class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
+          class="z-40 h-16 w-16 text-xl md:h-24 md:w-24 md:text-3xl bg-white text-black rounded-full focus:outline-none"
         >
           <i class="fas fa-play"></i>
         </button>
-        <div class="z-50 text-left ml-8">
+        </div>
+        
+        <div class="z-40 text-left ml-4 md:ml-8">
           <!-- Song Info -->
-          <div class="text-3xl font-bold">{{ song.modified_name }}</div>
+          <div class="text-xl md:text-3xl font-bold">{{ song.modified_name }}</div>
           <div>{{ song.gener }}</div>
         </div>
       </div>
@@ -49,9 +52,9 @@
             v-if="userLoggedIn"
             :validation-schema="schema"
             @submit="addComment"
-            class="flex justify-between"
+            class="flex justify-between flex-col md:flex-row"
           >
-            <div class="w-2/3">
+            <div class="w-full md:w-2/3">
               <vee-field
                 as="textarea"
                 name="comment"
@@ -95,7 +98,7 @@
               :key="comment.docID"
             >
               <!-- Comment Author -->
-              <div class="mb-3 flex justify-between">
+              <div class="mb-3 flex justify-between flex-col md:flex-row">
                 <div class="font-bold text-zinc-400 text-l">
                   <i class="fa fa-user mr-1"></i>
                   {{ comment.name }}

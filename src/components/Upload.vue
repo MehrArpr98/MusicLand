@@ -11,7 +11,7 @@
     <div class="p-6">
       <!-- Upload Dropbox -->
       <div
-        class="w-full bg-gray-700 px-10 py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-violet-200 hover:border-violet-200 hover:border-solid"
+        class="hidden md:block w-full bg-gray-700 px-10 py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-violet-200 hover:border-violet-200 hover:border-solid"
         :class="{'bg-violet-400 border-violet-400 border-solid' : is_dragOver}"
         @dragenter.prevent.stop="is_dragOver = true"
         @dragend.prevent.stop="is_dragOver = false"

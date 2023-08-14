@@ -5,7 +5,7 @@
 
     <router-view v-slot="{ Component }">
       <transition name="fade">
-        <component :is="Component"></component>
+        <component :is="Component" class="mt-16 md:mt-24"></component>
       </transition>    
     </router-view>
     
