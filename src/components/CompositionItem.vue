@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { storage, songsCollection, imgsCollection, auth } from '@/includes/firebase'
+import { storage, songsCollection  } from '@/includes/firebase'
 
 export default {
   name: 'CompositionItem',
@@ -191,19 +191,23 @@ export default {
           async () => {
             this.uploadImg.variant = 'bg-green-400'
 
-            const img = {
+           /*  const img = {
               uid: auth.currentUser.uid,
               display_name: auth.currentUser.displayName,
               original_name: task.snapshot.ref.name,
               sid: this.song.docID
-            }
-            img.url = await task.snapshot.ref.getDownloadURL()
+            } */
+            //img.url = await task.snapshot.ref.getDownloadURL()
+            const url = await task.snapshot.ref.getDownloadURL()
 
-            await imgsCollection.add(img)
-            await songsCollection.doc(this.song.docID).update('img_url', img.url)
+            //await imgsCollection.doc(this.song.docID).set(img)
+            //await songsCollection.doc(this.song.docID).update('img_url', img.url)
 
-            this.updateSongImg(this.index, img.url)
+           // this.updateSongImg(this.index, img.url)
+           
+            await songsCollection.doc(this.song.docID).update('img_url', url)
 
+            this.updateSongImg(this.index, url)
             setTimeout(() => {
               this.uploadImg.current_progress = 0
             }, 3000)
