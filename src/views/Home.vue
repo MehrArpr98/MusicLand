@@ -5,7 +5,7 @@
     <section class="mb-8 py-20 text-white text-center relative">
       <div
         class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-        style="background-image: url(../../public/assets/img/header.png)"
+        style="background-image: url(assets/img/header.png)"
       ></div>
       <div class="container mx-auto">
         <div class="text-white main-header-content">
@@ -43,7 +43,6 @@
 <script>
 import { songsCollection } from '@/includes/firebase'
 import AppSongItem from '@/components/SongItem.vue'
-import helper from '@/includes/helper'
 
 export default {
   components: {
@@ -54,8 +53,6 @@ export default {
       songs: [],
       maxPerPage: 6,
       pendingRequest: false,
-      introductionmusicAddress:'',
-      headerAddress:''
     }
   },
   beforeCreate() {
@@ -69,8 +66,7 @@ export default {
 
     window.addEventListener('scroll', this.handleScroll)
 
-    this.headerAddress = await helper.getStaticImage('header.png')
-    this.introductionmusicAddress = await helper.getStaticImage('introduction-music.png')
+
   },
   methods: {
     handleScroll() {

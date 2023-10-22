@@ -4,7 +4,7 @@
     <section class="w-full mb-8 py-14 text-center text-white relative">
       <div
         class="absolute inset-0 w-full h-full box-border bg-cover md:bg-contain music-bg md:bg-repeat-x"
-        :style="{backgroundImage: 'url('+songheaderAddress+')'}"
+        style="background-image: url(assets/img/song-header.png)"
       ></div>
       <div class="px-5 container mx-auto flex items-center">
         <div class="z-10">
@@ -138,7 +138,6 @@ export default {
       comment_alert_message: 'Please wait! Your comment is being submitted.',
       comments: [],
       sort: '1',
-      songheaderAddress:''
     }
   },
   computed: {
@@ -169,7 +168,6 @@ export default {
     this.song = docSnapshot.data()
     this.getComments()
 
-    this.songheaderAddress = await helper.getStaticImage('song-header.png')
   },
   methods: {
     ...mapActions(usePlayerStore, ['newSong']),

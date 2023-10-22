@@ -93,22 +93,14 @@ import { mapStores, mapState } from 'pinia'
 import useModalStore from '@/stores/modal'
 import useUserStore from '@/stores/user'
 import useMobileStore from '@/stores/mobile'
-import helper from '@/includes/helper'
 
 export default {
   name: 'AppHeader',
-  data() {
-    return {
-      logoAddress: ''
-    }
-  },
   computed: {
     ...mapStores(useModalStore, useUserStore, useMobileStore),
     ...mapState(useMobileStore, ['hiddenClass', 'isOpenMenu'])
   },
-  async created() {
-    this.logoAddress = await helper.getStaticImage('logo.png')
-  },
+
   methods: {
     toggleAuthModal() {
       this.modalStore.isOpen = !this.modalStore.isOpen
