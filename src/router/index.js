@@ -42,7 +42,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  linkExactActiveClass: 'text-violet-400'
+  linkExactActiveClass: 'text-violet-400',
+  scrollBehavior() {
+    window.scrollTo(0, 0);
+  },
 })
 
 router.beforeEach((to, from, next) => {

@@ -10,7 +10,7 @@
               <router-link
                 class="text-white text-l md:text-3xl mr-8 font-medium ease-in duration-300 font-mono hover:font-bold hover:text-white"
                 exact-active-class="no-active"
-                :to="{ name: 'home'}"
+                :to="{ name: 'home' }"
               >
                 <img :src="logoAddress" class="inline w-12 md:w-20" />
                 <span>Music<span class="text-violet-300">Land</span></span>
@@ -22,7 +22,9 @@
               <ul class="flex flex-row mt-1 text-white">
                 <!-- Navigation Links -->
                 <li>
-                  <router-link class="px-2 mx-2 hover:text-violet-200" :to="{ name: 'about'}">About</router-link>
+                  <router-link class="px-2 mx-2 hover:text-violet-200" :to="{ name: 'about' }"
+                    >About</router-link
+                  >
                 </li>
                 <li v-if="!userStore.userLoggedIn">
                   <a class="px-2 hover:text-violet-200" href="#" @click.prevent="toggleAuthModal">
@@ -31,10 +33,9 @@
                 </li>
                 <template v-else>
                   <li>
-                    <router-link
-                      class="px-2 mx-2 hover:text-violet-200"
-                      :to="{ name: 'manage'}"
-                    >Manage</router-link>
+                    <router-link class="px-2 mx-2 hover:text-violet-200" :to="{ name: 'manage' }"
+                      >Manage</router-link
+                    >
                   </li>
                   <li>
                     <a class="px-2 hover:text-violet-200" href="#" @click.prevent="signOut">
@@ -46,46 +47,41 @@
             </div>
           </div>
 
-
-  <!-- Mobile menu button -->
-  <div class="md:hidden flex items-center">
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
             <button class="outline-none mobile-menu-button" @click="toggleMenu">
-              <i class="fa w-6 h-6 text-gray-500" 
-                :class="[isOpenMenu? 'fa-times' : 'fa-bars']"></i>              
+              <i
+                class="fa w-6 h-6 text-gray-500"
+                :class="[isOpenMenu ? 'fa-times' : 'fa-bars']"
+              ></i>
             </button>
           </div>
-
-          
         </div>
       </div>
       <!-- mobile menu -->
       <div class="bg-gray-700 md:hidden mobile-menu px-4 z-50" :class="hiddenClass">
-        <ul class="pt-5 text-white ">
+        <ul class="pt-5 text-white">
           <li>
-            <router-link
-              class="block text-sm px-2 py-4"
-              :to="{ name: 'about'}"
-            >About</router-link>
+            <router-link class="block text-sm px-2 py-4" :to="{ name: 'about' }">About</router-link>
           </li>
 
           <li v-if="!userStore.userLoggedIn">
-                  <a class="block text-sm px-2 py-4" href="#" @click.prevent="toggleAuthModal">
-                    <i class="fa fa-user mr-1"></i>Login / Register
-                  </a>
-                </li>
-                <template v-else>
-                  <li>
-                    <router-link
-                      class="block text-sm px-2 py-4"
-                      :to="{ name: 'manage'}"
-                    >Manage</router-link>
-                  </li>
-                  <li>
-                    <a class="block text-sm px-2 py-4" href="#" @click.prevent="signOut">
-                      <i class="fa fa-user mr-1"></i>Logout
-                    </a>
-                  </li>
-                </template>
+            <a class="block text-sm px-2 py-4" href="#" @click.prevent="toggleAuthModal">
+              <i class="fa fa-user mr-1"></i>Login / Register
+            </a>
+          </li>
+          <template v-else>
+            <li>
+              <router-link class="block text-sm px-2 py-4" :to="{ name: 'manage' }"
+                >Manage</router-link
+              >
+            </li>
+            <li>
+              <a class="block text-sm px-2 py-4" href="#" @click.prevent="signOut">
+                <i class="fa fa-user mr-1"></i>Logout
+              </a>
+            </li>
+          </template>
         </ul>
       </div>
     </nav>
@@ -108,7 +104,7 @@ export default {
   },
   computed: {
     ...mapStores(useModalStore, useUserStore, useMobileStore),
-    ...mapState(useMobileStore, ['hiddenClass','isOpenMenu'])
+    ...mapState(useMobileStore, ['hiddenClass', 'isOpenMenu'])
   },
   async created() {
     this.logoAddress = await helper.getStaticImage('logo.png')

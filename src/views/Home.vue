@@ -5,7 +5,7 @@
     <section class="mb-8 py-20 text-white text-center relative">
       <div
         class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-        :style="{backgroundImage: 'url('+headerAddress+')'}"
+        style="backgroundImage: url(../assets/img/header.png)"
       ></div>
       <div class="container mx-auto">
         <div class="text-white main-header-content">
@@ -20,7 +20,7 @@
 
       <img
         class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full"
-        :src="introductionmusicAddress"
+        src="../assets/img/introduction-music.png"
       />
     </section>
 
