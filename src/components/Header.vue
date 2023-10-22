@@ -12,7 +12,7 @@
                 exact-active-class="no-active"
                 :to="{ name: 'home' }"
               >
-                <img :src="logoAddress" class="inline w-12 md:w-20" />
+                <img src="../assets/img/logo.png" class="inline w-12 md:w-20" />
                 <span>Music<span class="text-violet-300">Land</span></span>
               </router-link>
             </div>
